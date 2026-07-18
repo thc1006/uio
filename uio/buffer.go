@@ -113,9 +113,9 @@ func (b *Buffer) Data() []byte {
 	return b.data
 }
 
-// Has returns true if n bytes are available.
+// Has returns true if n bytes are available. A negative n is never available.
 func (b *Buffer) Has(n int) bool {
-	return len(b.data) >= n
+	return n >= 0 && len(b.data) >= n
 }
 
 // Len returns the length of the remaining bytes.
